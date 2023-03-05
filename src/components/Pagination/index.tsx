@@ -1,37 +1,39 @@
 import React from 'react';
-import { Button, FlatList, View } from 'react-native';
+import { ArrowLeft, ArrowRight } from 'react-native-feather';
+import { Button, CurrPage, PaginationContainer } from './styles';
 
 type PaginationProps = {
+  currPage: number;
   itemsPerPage: number;
   totalItems: number;
   paginate(page: number): void;
 };
 
 const Pagination: React.FC<PaginationProps> = ({
+  currPage,
   itemsPerPage,
   totalItems,
   paginate,
 }) => {
-  const pageNumbers: number[] = [];
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  for (let i: number = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const goToPage = (page: number) => {
+    paginate(page);
+  };
 
   return (
-    <View>
-      <FlatList
-        data={pageNumbers}
-        horizontal={true}
-        renderItem={({ item }) => (
-          <Button
-            onPress={() => paginate(item)}
-            title={item.toString()}
-            key={item}
-          />
-        )}
-      />
-    </View>
+    <PaginationContainer>
+      <Button onPress={() => goToPage(currPage - 1)} disabled={currPage === 1}>
+        <ArrowLeft />
+      </Button>
+      <CurrPage>Page {currPage}</CurrPage>
+      <Button
+        onPress={() => goToPage(currPage + 1)}
+        disabled={currPage === totalPages}
+      >
+        <ArrowRight />
+      </Button>
+    </PaginationContainer>
   );
 };
 

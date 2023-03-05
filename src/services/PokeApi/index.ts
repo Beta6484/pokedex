@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { pokemon } from '../../interfaces';
+import { response } from '../../interfaces';
 import IDFromURL from '../../utils/returnIdFromURL';
 
 const BASE_URL = 'https://pokeapi.co/api/v2/';
@@ -17,8 +17,8 @@ const getList = async (offset?: number, limit?: number) => {
   return await res;
 };
 
-const getDetail = async (data: any) => {
-  data.results.map(async (item: pokemon) => {
+const getDetail = async (data: response) => {
+  for (let item of data.results) {
     const pokeItem = await axios.get(item.url);
 
     item.id = pokeItem.data.id;
@@ -28,9 +28,9 @@ const getDetail = async (data: any) => {
     item.sprites = pokeItem.data.sprites;
     item.stats = pokeItem.data.stats;
     item.types = pokeItem.data.types;
-  });
+  }
 
-  return await data;
+  return data;
 };
 
 export const getPokeList = async (offset?: number, limit?: number) => {
