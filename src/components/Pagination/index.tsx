@@ -1,5 +1,10 @@
 import React from 'react';
-import { ArrowLeft, ArrowRight } from 'react-native-feather';
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from 'react-native-feather';
 import { Button, CurrPage, PaginationContainer } from './styles';
 
 type PaginationProps = {
@@ -23,15 +28,24 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <PaginationContainer>
+      <Button onPress={() => goToPage(1)} disabled={currPage === 1}>
+        <ChevronsLeft />
+      </Button>
       <Button onPress={() => goToPage(currPage - 1)} disabled={currPage === 1}>
-        <ArrowLeft />
+        <ChevronLeft />
       </Button>
       <CurrPage>Page {currPage}</CurrPage>
       <Button
         onPress={() => goToPage(currPage + 1)}
         disabled={currPage === totalPages}
       >
-        <ArrowRight />
+        <ChevronRight />
+      </Button>
+      <Button
+        onPress={() => goToPage(totalPages)}
+        disabled={currPage === totalPages}
+      >
+        <ChevronsRight />
       </Button>
     </PaginationContainer>
   );
