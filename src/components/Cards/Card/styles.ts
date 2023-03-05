@@ -5,7 +5,7 @@ type CardContainerProps = {
   bgColor: string;
 };
 
-export const CardContainer = styled.View<CardContainerProps>`
+export const CardContainer = styled.Pressable<CardContainerProps>`
   padding: 5px 10px;
   border: solid 1px #cccccc;
   border-radius: 5px;
