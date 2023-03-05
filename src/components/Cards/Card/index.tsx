@@ -1,31 +1,33 @@
-import { Heart } from 'react-native-feather';
 import React from 'react';
-
+import { ImageSourcePropType } from 'react-native';
 import { pokemon } from '../../../interfaces';
+import GetColorByPokemonType from '../../../utils/getColorByPokemonType';
+
 import {
   CardContainer,
   CardHeader,
   Favorite,
-  PokeID,
   Img,
   Name,
+  PokeID,
 } from './styles';
 
 type CardProps = {
-  data: any;
-  backGround?: string;
-  fav?: boolean;
+  data: pokemon;
 };
 
-const Card: React.FC<CardProps> = ({ data, backGround, fav }) => {
-  console.log(data);
+const Card: React.FC<CardProps> = ({ data }) => {
+  const imgURL = data.sprites?.front_default as ImageSourcePropType;
+  const type = (data.types && data.types[0].type?.name) || '#FFFFFF';
+  const bgColor = GetColorByPokemonType(type);
+
   return (
-    <CardContainer>
+    <CardContainer bgColor={bgColor}>
       <CardHeader>
         <PokeID>{data.num}</PokeID>
-        <Favorite>{(fav && <Heart fill={'red'} />) || <Heart />}</Favorite>
+        <Favorite fill={(data.favorite && 'red') || 'none'} />
       </CardHeader>
-      {/* <Img source={data.sprites.front_default} /> */}
+      <Img source={imgURL} />
       <Name>{data.name}</Name>
     </CardContainer>
   );

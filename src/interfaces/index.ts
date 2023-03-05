@@ -1,6 +1,8 @@
 export type response = {
   count: number;
   results: [pokemon];
+  next?: string;
+  previous?: string;
 };
 
 export type pokemon = {
@@ -8,6 +10,7 @@ export type pokemon = {
   name: string;
   url: string;
   num?: string;
+  favorite?: boolean;
   moves?: [
     {
       move: {
@@ -43,3 +46,5 @@ export type pokemon = {
     }
   ];
 };
+
+export type Color = { [propKey: string]: string };

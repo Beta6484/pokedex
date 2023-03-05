@@ -9,7 +9,3 @@ export const Container = styled.View`
   background-attachment: fixed;
   max-height: 100vh;
 `;
-
-export const Scroll = styled.FlatList`
-  padding-top: 100px;
-`;
