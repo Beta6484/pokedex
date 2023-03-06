@@ -1,4 +1,3 @@
-import { Heart } from 'react-native-feather';
 import styled from 'styled-components/native';
 
 type CardContainerProps = {
@@ -22,11 +21,8 @@ export const CardHeader = styled.View`
   width: 100%;
 `;
 
-export const PokeID = styled.Text``;
-
-export const Favorite = styled(Heart)`
-  width: 20px;
-  height: 20px;
+export const PokeID = styled.Text`
+  font-family: monospace;
 `;
 
 export const Img = styled.Image`

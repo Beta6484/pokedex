@@ -6,9 +6,11 @@ export type response = {
 };
 
 export type pokemon = {
-  id?: number;
+  id: number;
   name: string;
   url: string;
+  height?: number;
+  weight?: number;
   num?: string;
   favorite?: boolean;
   moves?: [

@@ -1,9 +1,5 @@
 import styled from 'styled-components/native';
 
-type ButtonProps = {
-  disabled?: boolean;
-};
-
 export const PaginationContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;

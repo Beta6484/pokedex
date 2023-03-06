@@ -4,15 +4,9 @@ import { ImageSourcePropType, Modal } from 'react-native';
 import { pokemon } from '../../../interfaces';
 import Detail from '../../../screens/Detail';
 import GetColorByPokemonType from '../../../utils/getColorByPokemonType';
+import Capture from '../../Capture';
 
-import {
-  CardContainer,
-  CardHeader,
-  Favorite,
-  Img,
-  Name,
-  PokeID,
-} from './styles';
+import { CardContainer, CardHeader, Img, Name, PokeID } from './styles';
 
 type CardProps = {
   data: pokemon;
@@ -29,7 +23,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
       <CardContainer onPress={() => setModalVisible(true)} bgColor={bgColor}>
         <CardHeader>
           <PokeID>{data.num}</PokeID>
-          <Favorite fill={(data.favorite && 'red') || 'none'} />
+          <Capture id={data.id} />
         </CardHeader>
         <Img source={imgURL} />
         <Name>{data.name}</Name>
