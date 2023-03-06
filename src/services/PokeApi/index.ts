@@ -22,9 +22,12 @@ const getDetail = async (data: response) => {
     const pokeItem = await axios.get(item.url);
 
     item.id = pokeItem.data.id;
+    item.height = pokeItem.data.height;
+    item.weight = pokeItem.data.weight;
     item.num = `#${IDFromURL(item.url)}`;
     item.favorite = undefined;
     item.moves = pokeItem.data.moves;
+    item.species = pokeItem.data.species;
     item.sprites = pokeItem.data.sprites;
     item.stats = pokeItem.data.stats;
     item.types = pokeItem.data.types;

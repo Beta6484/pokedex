@@ -9,25 +9,20 @@ export type pokemon = {
   id: number;
   name: string;
   url: string;
-  height?: number;
-  weight?: number;
+  height: number;
+  weight: number;
   num?: string;
   favorite?: boolean;
-  moves?: [
+  moves: [
     {
       move: {
         name: string;
       };
     }
   ];
-  species?: {
+  species: {
     // Dados de eggs_group
-    id: number;
-    pokemon_species: [
-      {
-        name: string;
-      }
-    ];
+    name: string;
   };
   sprites: {
     front_default: string;
@@ -37,7 +32,7 @@ export type pokemon = {
       };
     };
   };
-  stats?: [
+  stats: [
     {
       base_stat: number;
       stat: {
@@ -45,7 +40,7 @@ export type pokemon = {
       };
     }
   ];
-  types?: [
+  types: [
     {
       type: {
         name: string;

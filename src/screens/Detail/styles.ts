@@ -33,7 +33,7 @@ export const HeaderInfo = styled.View`
   align-items: center;
 `;
 
-export const Details = styled.View`
+export const Details = styled.ScrollView`
   flex: 1;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.6);
@@ -77,14 +77,25 @@ export const Subtitle = styled.Text`
 `;
 
 export const Info = styled.Text`
-  font-size: 16px;
-  span: {
-    font-weight: bold;
-  }
+  width: 100%;
+  padding-left: 15px;
+  margin-bottom: 5px;
+`;
+
+export const InfoTitle = styled.Text`
+  font-weight: bold;
+  font-size: 15px;
+  margin-right: 4px;
+`;
+
+export const InfoValue = styled.Text`
+  font-size: 15px;
+  text-transform: capitalize;
 `;
 
 export const Type = styled.Text<TypeProps>`
-  padding: 2px 4px;
-  border-radius: 50%;
+  padding: 2px 6px;
+  border-radius: 10px;
   background-color: ${(props) => `${props.typeColor}`};
+  margin-right: 5px;
 `;
